@@ -121,8 +121,8 @@ def function5():
 def function6():
     # Create a null vector of size 10 but the fifth and eighth value which is 10,20 respectively
 
-    arr = np.array(((np.arange(10) == 5)*10) |
-                   ((np.arange(10) == 8)*20), dtype=int)
+    arr = np.array(((np.arange(10) == 4)*10) |
+                   ((np.arange(10) == 7)*20), dtype=int)
     arr
     return arr
 
