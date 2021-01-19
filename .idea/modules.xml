@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/AIC_Q2_Assignments.iml" filepath="$PROJECT_DIR$/.idea/AIC_Q2_Assignments.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../piaic-datascience-teaching/.idea/piaic-datascience-teaching.iml" filepath="$PROJECT_DIR$/../../piaic-datascience-teaching/.idea/piaic-datascience-teaching.iml" />
     </modules>
   </component>
 </project>
