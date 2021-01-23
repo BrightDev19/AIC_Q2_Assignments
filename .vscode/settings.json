@@ -1,3 +1,6 @@
 {
-    "python.pythonPath": "C:\\Program Files\\Python38\\python.exe"
+    "python.pythonPath": "C:\\Program Files\\Python38\\python.exe",
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "Fira Code",
+    "python.linting.enabled": true
 }
