@@ -1,6 +1,5 @@
 What is DataFrame?
 A DataFrame is a rectangular table a data and contains an ordered collection of columns, each of which can be different value type. The DataFrame has both row ans columsn index; it can be thought of a dictionary of Series all sharing the same index.
->> Conscept:
+>> Concept:
 While a DataFrame is physically two-dimensional, you can use it to
-represent higher dimensional data in a tabular format using hier‐
-archical indexing.
+represent higher dimensional data in a tabular format using hierarchical indexing.

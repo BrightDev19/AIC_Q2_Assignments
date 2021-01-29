@@ -297,6 +297,6 @@ print(np_arr.dtype)
 import numpy as np
 
 w = np.full((2, 4), [[3, 5, 6, 5], [6, 5, 7, 8]], dtype='U1')
-print(w)
-
+print(w.shape)
+np
 # %%

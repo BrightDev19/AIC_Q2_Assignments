@@ -18,27 +18,37 @@ print("Series Values:", ps_with_lst.values)
 print("Series Index:", ps_with_lst.index)
 # Altering index inplace with assignment
 # number of new indexes must be same as previous indexes
-ps_with_lst.index=['a','b','c','d','e','f','g']
-print("ps_with_lst with new indexes",ps_with_lst,sep='\n')
+ps_with_lst.index = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+print("ps_with_lst with new indexes", ps_with_lst, sep='\n')
 # print("Unique Values Count\n{0}".format(ps_with_lst.value_counts(dropna=False)))
 
 
 print("{0}SeriesWithDictionary{0}".format('*' * 10))
 # While feeding data to pandas series with Python Dictionary
-# Keys of the dictionary becomes the index and values remain values in pandas series.
-states_with_pop = {"Lahore": (500,200,300), "Islamabad": (700,900), "Karachi": 1500, "Peshawar": 600}
+# Keys of the dictionary becomes the index (in sorted order) and values remain values in pandas series.
+states_with_pop = {"Lahore": 500, "Islamabad": 700, "Karachi": 1500, "Peshawar": 600}
 ps_with_dict = pd.Series(states_with_pop)
 print("Dict Series:", ps_with_dict, sep="\n")
 # by reindexing you can add more indexes, rearrange previous indexes
-ps_with_dict=ps_with_dict.reindex(['Lahore', 'Karachi',"Islamabad", 'Multan',"Peshawar"])
+ps_with_dict = ps_with_dict.reindex(['Lahore', 'Karachi', "Islamabad", 'Multan', "Peshawar","Quetta"])
 print("After Reindexing of the Series")
 # Performs slicing of the series. Note: For indexing you have to exactly specify the index of the series.
-print("Series Slicing:", ps_with_dict[0:], sep="\n")
+print("Series Slicing:", ps_with_dict[0:2], sep="\n")
 # Numpy ndarray like filtering on pandas series.
-filt_sr = ps_with_lst[ps_with_lst > 30]
-print("Filterd Series:", filt_sr)
+filt_sr = ps_with_dict[ps_with_dict > 800]
+print("Filterd Series:", filt_sr,sep='\n')
 # Create a third series by stacking two of them
-sr_concat = pd.Series(np.hstack((ps_with_tpl.values, ps_with_dict.values)), index=np.hstack((ps_with_tpl.index, ps_with_dict.index)))
+sr_concat = pd.Series(np.hstack((ps_with_tpl.values, ps_with_dict.values)),
+                      index=np.hstack((ps_with_tpl.index, ps_with_dict.index)))
 print("Concatenated Series", sr_concat, sep="\n")
 # Finds the null value if series contains
-print(ps_with_lst.notnull())
+print("where value is not null",ps_with_lst.notnull(),sep='\n')
+# Series can behave like python dictionary,in which 'in' operator can be used to find out any index in the series.
+index_position = 2
+index_lbl = ps_with_dict.index[index_position]
+print("{0} is indexed in ps_with_dict {1}".format(index_lbl,index_lbl in ps_with_dict))
+
+# Name attribute
+ps_with_dict.name = "Population"
+ps_with_dict.index.name = "State"
+print(ps_with_dict)
