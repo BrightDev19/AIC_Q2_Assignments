@@ -36,13 +36,15 @@ pdf_states_pop = pd.DataFrame(py_dict_states)
 print('First DataFrame:',pdf_states_pop,sep='\n')
 pdf_rearranged_cols = pd.DataFrame(py_dict_states, columns=['Year','State','Population','Pop'])
 print('Cols Re-organized DataFrame:',pdf_rearranged_cols,sep='\n')
-
+pdf_rearranged_cols.reindex = ['a','b','c','d','e']
 """This method returns the top n rows of the series or DataFrame
     by default it returns top 5 rows
 """
 top_row_pdf = pdf_states_pop.head(1)
 print("Head of the DF",top_row_pdf,sep='\n')
 
+pdf_rearranged_cols.reindex=[7,21,25,36,253]
+print('Cols Re-Indexed DataFrame:',pdf_rearranged_cols,sep='\n')
 # %%
 
 
