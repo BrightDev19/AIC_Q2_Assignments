@@ -1,8 +1,11 @@
 
 # %%
+from numpy.core.fromnumeric import transpose
 import pandas as pd
 import numpy as np
 import time as tm
+
+from pandas.core.groupby.generic import pin_whitelisted_properties
 # from AIC_Q2_Practices import ANSIColors as clr
 
 # print(clr.COLORS['default'])
@@ -31,20 +34,29 @@ print("Pandas Series from Dictionary:",ps_dict_states)
 
 # %%
 import pandas as pd
+print('\u001b[31;1m')
 print('*' * 10,"DataFrame",'*'*10)
 pdf_states_pop = pd.DataFrame(py_dict_states)
 print('First DataFrame:',pdf_states_pop,sep='\n')
-pdf_rearranged_cols = pd.DataFrame(py_dict_states, columns=['Year','State','Population','Pop'])
+pdf_rearranged_cols = pd.DataFrame(py_dict_states, columns=['Population','Year','State','Debt'])
 print('Cols Re-organized DataFrame:',pdf_rearranged_cols,sep='\n')
-pdf_rearranged_cols.reindex = ['a','b','c','d','e']
+
 """This method returns the top n rows of the series or DataFrame
     by default it returns top 5 rows
 """
 top_row_pdf = pdf_states_pop.head(1)
 print("Head of the DF",top_row_pdf,sep='\n')
 
-pdf_rearranged_cols.reindex=[7,21,25,36,253]
-print('Cols Re-Indexed DataFrame:',pdf_rearranged_cols,sep='\n')
+# Getting the length(number of row) of dataframe
+# pdf_rearranged_cols.Debt = np.around(np.random.rand(pdf_rearranged_cols.__len__())*100,0)
+pdf_rearranged_cols.Debt = np.random.random_integers(5,size=pdf_rearranged_cols.__len__())
+print('\u001b[32;1mFilled Debt\n',pdf_rearranged_cols)
+
+pdf_rearranged_cols['Ohio'] = pdf_rearranged_cols['State'] =='Ohio'
+print('\u001b[32;1mAppending Ohio\n',pdf_rearranged_cols)
+del pdf_rearranged_cols['Ohio']
+print('\u001b[32;1mDeleting Ohio\n',pdf_rearranged_cols)
+
 # %%
 
 
@@ -57,5 +69,26 @@ consumed_time = end_time - start_time
 print("Time Taken:",consumed_time)
 
 
+
+# %%
+# Nested Dictionary
+nest_dic = {'Punjab':{'2010' :800,2011:950,2012:1110},'Sindh':{'2010' :800,2011:950,2012:1110},'Punjab':{'2010' :800,2011:950,2013:1110}}
+pd_prvince= pd.DataFrame(nest_dic)
+pd_prvince.index.name = "Year"
+pd_prvince.columns.name = "State"
+
+print('\u001b[37;1m',pd_prvince.values)
+# Transposing DataFrame
+print('\u001b[37;1m',pd_prvince.transpose())
+
+# %%
+
+# index and column object in pandas
+# 
+pd_prv_indexes = pd_prvince.index # Returns an object of indexes, so with array operations you can get/ find index without knowing its name.
+print('\u001b[38;1m',type(pd_prv_indexes))
+print('\u001b[38;1m')
+pd_prv_cols = pd_prvince.columns
+print(pd_prv_cols.dtype)
 
 # %%
